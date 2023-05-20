@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react"
+import {NavigationContainer} from '@react-navigation/native'
+import AppNavigator from "./app/navigation/AppNavigator"
+import { AppProvider } from "./app/context/AudioProvider";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AppProvider>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </AppProvider>
   );
 }
+/* audiolist- needs to obtain music information (music name, artist name, songlength, music pic) from the songs in assets/songs folder
+              play/pause and like button for each song
+              when the song is clicked, the song starts playing or gets paused
+              when like button is clicked it gets added to the favorites json file along with information
+   
+   player-    play/pause button functionality need to be added.
+              like/unlike button need to be configured
+              play next/previous button need to be configured
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+   favorites- play/pause and unlike button for each song
+*/
