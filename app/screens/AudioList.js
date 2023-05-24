@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, SafeAreaView, FlatList, TouchableOpacity } from 'react-native'
 import React, { useContext } from 'react'
 import { Entypo } from "react-native-vector-icons"
-import { loaded_songs } from "C:/Users/ADMIN/OneDrive/Documents/expo app/app1/songs.json"
-import { AppContext } from '../context/AudioProvider'
+import { songs }  from "./songs"
+import { AppContext } from '../context/AppProvider'
 import { isAlreadyPlay } from "../screens/Player";
 import PlayButton from "./PlayButton";
 
@@ -10,30 +10,27 @@ import PlayButton from "./PlayButton";
 const AudioList = () => {
 
     const {addFav} = useContext(AppContext);
-
+    
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
-                data={loaded_songs}
+                data={songs}
                 renderItem={(songinfo) => {
                     return (
                         <View style={styles.eachsong}>
                             <View style={styles.to_play}>
                                 <Image style={styles.sm_thumbnail} source={{uri: songinfo.item.songpic_url}}/>
-                                    <View style={styles.info}>
-                                        <Text style={styles.songnames}>{songinfo.item.songname}</Text>
-                                        <Text>{songinfo.item.artistname}</Text>
-                                    </View>
-                                    <View >
-                                        {/* <Entypo name="controller-play" size={20} color="#333e6a"/>
-                                        when paused: <Entypo name="controller-paus" size={20} color="#333e6a" /> */}
-                                        <View style={styles.PlayButton}>
-                                            {!isAlreadyPlay ? 
+                                <View style={styles.info}>
+                                    <Text style={styles.songnames}>{songinfo.item.songname}</Text>
+                                    <Text>{songinfo.item.artistname}</Text>
+                                </View>
+                                <View >
+                                    <View style={styles.PlayButton}>
+                                        {!isAlreadyPlay ? 
                                             (<PlayButton onPress={() => onStartPress()} state="play" size={20}/>) : 
-                                            (<PlayButton onPress={() => onStartPress()} state="pause" size={20}/>)
-                                            }
-                                        </View>
+                                            (<PlayButton onPress={() => onStartPress()} state="pause" size={20}/>) }
                                     </View>
+                                </View>
                             </View>
                             <View>
                                 <TouchableOpacity onPress={() => addFav(songinfo.item)}>
@@ -81,3 +78,5 @@ const styles = StyleSheet.create({
 })
 
 export default AudioList
+
+

@@ -14,3 +14,5 @@ console.log(JSON.stringify(favList))
 
 return <AppContext.Provider value={{addFav, favList}}>{children}</AppContext.Provider>
 }
+
+

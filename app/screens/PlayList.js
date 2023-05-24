@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, SafeAreaView, FlatList } from 'react-native'
 import React, { useContext } from 'react'
 import { Entypo } from "react-native-vector-icons"
-import { AppContext } from '../context/AudioProvider'
+import { AppContext } from '../context/AppProvider'
 
 const PlayList = () => {
    const {favList} = useContext(AppContext)
@@ -26,7 +26,6 @@ const PlayList = () => {
                             </View>
                             <View>
                                 <Entypo name="heart-outlined" size={20} color="#333e6a" />
-                                {/* when liked: <Entypo name="heart" size={24} color="#333e6a" /> */}
                             </View>
                         </View>
                     )
@@ -65,3 +64,5 @@ info:{
 })
 
 export default PlayList
+
+
